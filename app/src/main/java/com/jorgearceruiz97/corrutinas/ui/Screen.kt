@@ -34,6 +34,7 @@ fun Pantalla(cambiarColor:()->Unit){
         horizontalAlignment = Alignment.CenterHorizontally){
         Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Blue), onClick = { cambiarColor }) {
             Text(text = "Cambiar color")
+
         }
         Text(text = texto)
         Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Red), onClick = { texto = bloqueoApp() }) {
