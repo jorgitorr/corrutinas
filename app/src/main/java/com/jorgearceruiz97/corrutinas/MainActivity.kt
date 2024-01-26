@@ -10,7 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.jorgearceruiz97.corrutinas.ui.Screen
+import com.jorgearceruiz97.corrutinas.corrutinas.ui.Pantalla
+import com.jorgearceruiz97.corrutinas.corrutinas.ui.viewModelPrincipal
 import com.jorgearceruiz97.corrutinas.ui.theme.CorrutinasTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Screen()
+                    Pantalla(viewModel = viewModelPrincipal())
                 }
             }
         }
