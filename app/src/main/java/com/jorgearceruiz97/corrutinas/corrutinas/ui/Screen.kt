@@ -28,14 +28,13 @@ fun Pantalla(viewModel:viewModelPrincipal){
             Text(text = "Cambiar color")
 
         }
-        Text(color = Color.Black, text = viewModel._texto)
+        if(viewModel.isLoading){
+            CircularProgressIndicator()
+        }else{
+            Text(color = Color.Black, text = viewModel._texto)
+        }
         Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Red),
             onClick = { viewModel.fetchData() }) {
-            if(viewModel.isLoading){
-                CircularProgressIndicator()
-            }else{
-                viewModel.fetchData()
-            }
             Text(text = "Llamar API")
         }
     }

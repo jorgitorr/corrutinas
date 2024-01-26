@@ -41,9 +41,10 @@ class viewModelPrincipal:ViewModel() {
 
 
     private suspend fun llamarApi() {
+        _cont = _cont.plus(1)
         val result = withContext(Dispatchers.IO) {
             delay(5000)
-            "Respuesta de la API"
+            _texto = "Respuesta de la API $_cont"
         }
     }
 
