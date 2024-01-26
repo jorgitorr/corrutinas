@@ -4,6 +4,7 @@ import  androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,6 +31,11 @@ fun Pantalla(viewModel:viewModelPrincipal){
         Text(color = Color.Black, text = viewModel._texto)
         Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Red),
             onClick = { viewModel.fetchData() }) {
+            if(viewModel.isLoading){
+                CircularProgressIndicator()
+            }else{
+                viewModel.fetchData()
+            }
             Text(text = "Llamar API")
         }
     }

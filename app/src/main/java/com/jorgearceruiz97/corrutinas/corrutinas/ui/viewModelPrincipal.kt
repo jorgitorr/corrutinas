@@ -1,5 +1,6 @@
 package com.jorgearceruiz97.corrutinas.corrutinas.ui
 
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,6 +18,7 @@ class viewModelPrincipal:ViewModel() {
     var _color by mutableStateOf(Color.Blue)
     var _texto by mutableStateOf("")
     var _cont by mutableStateOf(0)
+    var isLoading by mutableStateOf(false)
 
 
     fun cambiarColor(){
@@ -24,16 +26,30 @@ class viewModelPrincipal:ViewModel() {
     }
 
     fun fetchData() {
-        _cont = _cont.plus(1)
         //Nos permite crear una corrutina desde un ViewModel
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                delay(5000)
-                "Respuesta de la API $_cont"
+            try {
+                isLoading = true
+                llamarApi()
+            } catch (e: Exception) {
+                println("Error ${e.message}")
+            } finally {
+                isLoading = false
             }
-            _texto = result
         }
     }
+
+
+    private suspend fun llamarApi() {
+        val result = withContext(Dispatchers.IO) {
+            delay(5000)
+            "Respuesta de la API"
+        }
+    }
+
+
+
+
 
 }
 
