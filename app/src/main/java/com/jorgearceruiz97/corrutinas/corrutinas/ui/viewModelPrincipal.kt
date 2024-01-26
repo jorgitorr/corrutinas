@@ -14,11 +14,7 @@ class viewModelPrincipal {
 
 
     fun cambiarColor(){
-        if(_color==Color.Blue){
-            Color.Red
-        }else{
-            Color.Blue
-        }
+        if(_color==Color.Blue)_color = Color.Red else _color = Color.Blue
     }
 
     /**
