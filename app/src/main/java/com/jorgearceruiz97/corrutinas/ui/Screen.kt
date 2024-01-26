@@ -30,6 +30,7 @@ fun Screen(){
 @Composable
 fun Pantalla(cambiarColor:()->Unit){
     var texto by remember { mutableStateOf("") }
+    var cont by remember { mutableStateOf(0) }
     Column(verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally){
         Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Blue), onClick = { cambiarColor }) {
@@ -37,7 +38,7 @@ fun Pantalla(cambiarColor:()->Unit){
 
         }
         Text(text = texto)
-        Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Red), onClick = { texto = bloqueoApp() }) {
+        Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Red), onClick = { texto = bloqueoApp(cont++) }) {
             Text(text = "Llamar API")
         }
     }
@@ -47,7 +48,7 @@ fun Pantalla(cambiarColor:()->Unit){
 /**
  * suspende la ejecución del hilo actual
  */
-fun bloqueoApp():String{
+fun bloqueoApp(cont:Int):String{
     Thread.sleep(5000)
-    return "Respuesta de la API"
+    return "Respuesta de la API $cont"
 }
