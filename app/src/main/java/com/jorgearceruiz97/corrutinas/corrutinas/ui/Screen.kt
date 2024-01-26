@@ -29,7 +29,7 @@ fun Pantalla(viewModel:viewModelPrincipal){
         }
         Text(color = Color.Black, text = viewModel._texto)
         Button(colors =ButtonDefaults.buttonColors(containerColor = Color.Red),
-            onClick = { viewModel.bloqueoApp() }) {
+            onClick = { viewModel.fetchData() }) {
             Text(text = "Llamar API")
         }
     }
